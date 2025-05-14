@@ -1,1 +1,3 @@
 *.swp
+.vercel
+node_modules
