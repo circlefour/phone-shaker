@@ -6,14 +6,14 @@ function setupDeviceMotionListener() {
     //console.log('hi wussup');
 
     const acceleration = event.accelerationIncludingGravity;
-    const intensity = Math.sqrt(
+    const level = Math.sqrt(
       acceleration.x ** 2 + acceleration.y ** 2 + acceleration.z ** 2
     );
 
-    //console.log("shake intensity: ", intensity);
-    document.getElementById("txt").textContent = `${intensity}`;
+    //console.log("shake level: ", level);
+    document.getElementById("txt").textContent = `${level}`;
 
-    socket.emit('shake', intensity);
+    socket.emit('shake', level);
   });
 }
 
@@ -25,9 +25,9 @@ if (
   // Wait for user gesture to request permission
   const btn = document.createElement('button');
   btn.textContent = 'Enable Motion Access';
-  btn.style.position = 'fixed';
-  btn.style.top = '20px';
-  btn.style.left = '20px';
+  btn.style.position = 'absolute';
+  btn.style.top = '50%';
+  btn.style.left = '50%';
   btn.style.zIndex = 9999;
   document.body.appendChild(btn);
 
