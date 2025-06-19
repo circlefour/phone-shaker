@@ -1,6 +1,8 @@
 //console.log('hiiiii');
 const socket = io("https://chaos-server-dev.up.railway.app/");
 
+const btn = document.getElementById("btn");
+
 function setupDeviceMotionListener() {
   window.addEventListener("devicemotion", (event) => {
     //console.log('hi wussup');
@@ -11,7 +13,7 @@ function setupDeviceMotionListener() {
     );
 
     //console.log("shake level: ", level);
-    document.getElementById("txt").textContent = `${level}`;
+    document.getElementById("num").textContent = `${Math.round(level)}`;
 
     socket.emit('shake', level);
   });
@@ -23,13 +25,8 @@ if (
   typeof DeviceMotionEvent.requestPermission === 'function'
 ) {
   // Wait for user gesture to request permission
-  const btn = document.createElement('button');
-  btn.textContent = 'Enable Motion Access';
-  btn.style.position = 'absolute';
-  btn.style.top = '50%';
-  btn.style.left = '50%';
-  btn.style.zIndex = 9999;
-  document.body.appendChild(btn);
+  //const btn = document.createElement('button');
+  //btn.style.hidden = "false";
 
   btn.addEventListener('click', () => {
     DeviceMotionEvent.requestPermission()
