@@ -1,5 +1,6 @@
 //console.log('hiiiii');
-const socket = io("https://chaos-server-dev.up.railway.app/");
+const backend = "https://mobile-interaction.onrender.com";
+const socket = io(backend);
 
 const btn = document.getElementById("btn");
 
