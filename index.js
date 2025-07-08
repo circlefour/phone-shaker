@@ -15,7 +15,9 @@ function setupDeviceMotionListener() {
     //console.log("shake level: ", level);
     document.getElementById("num").textContent = `${Math.round(level)}`;
 
-    socket.emit('shake', level);
+    // prior thing
+    //socket.emit('shake', level);
+    socket.emit('shake', {x: acceleration.x, y: acceleration.y, z: acceleration.z});
   });
 }
 
