@@ -37,11 +37,11 @@ if (
           setupDeviceMotionListener();
           btn.remove(); // remove button after granting
         } else {
-          console.warn('Motion permission denied');
+          console.warn('motion permission denied');
         }
       })
       .catch(error => {
-        console.error('Motion permission error:', error);
+        console.error('motion permission error:', error);
       });
   });
 } else {
