@@ -1,5 +1,5 @@
-//console.log('hiiiii');
 const backend = "https://mobile-interaction.onrender.com";
+
 const socket = io(backend);
 
 const btn = document.getElementById("btn");
@@ -9,6 +9,8 @@ function setupDeviceMotionListener() {
     //console.log('hi wussup');
 
     const acceleration = event.accelerationIncludingGravity;
+
+    // i used to use this, but now i don't really, but i'll keep it for the ui to display how the value is changing, though the visual for changing values should be more intuitive
     const level = Math.sqrt(
       acceleration.x ** 2 + acceleration.y ** 2 + acceleration.z ** 2
     );
@@ -22,14 +24,11 @@ function setupDeviceMotionListener() {
   });
 }
 
-// Check if permission is needed (iOS 13+)
+// check if permission is needed (iOS 13+)
 if (
   typeof DeviceMotionEvent !== 'undefined' &&
   typeof DeviceMotionEvent.requestPermission === 'function'
 ) {
-  // Wait for user gesture to request permission
-  //const btn = document.createElement('button');
-  //btn.style.hidden = "false";
 
   btn.addEventListener('click', () => {
     DeviceMotionEvent.requestPermission()
@@ -46,7 +45,7 @@ if (
       });
   });
 } else {
-  // No permission required (e.g., Android or older iOS)
+  // no permission required (e.g., android or older iOS)
   setupDeviceMotionListener();
 }
 
